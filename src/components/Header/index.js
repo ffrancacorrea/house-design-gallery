@@ -1,23 +1,24 @@
 import styled from "@emotion/styled";
-import coverHouse from "../../assets/coverHouse.jpg";
+import images from "../../assets/images";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #0b0e12;
   background-image: linear-gradient(
       to left bottom,
       rgba(0, 0, 0, 0.6),
       rgba(0, 0, 0, 0.2)
     ),
-    url(${coverHouse});
+    url(${images.coverHouse});
   margin: 0;
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
 `;
-const Content = styled.div`
+const TitleWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 40vh;
@@ -48,39 +49,13 @@ const BottomWave = styled.div`
     fill: #0b0e12;
   }
 `;
-const Card = styled.div`
-  display: flex;
-  align-self: center;
-  justify-content: center;
-  background: linear-gradient(to left bottom, #1f304d, #0b0e12);
-  width: 35%;
-  cursor: pointer;
-  margin-top: 41vh;
-  border-radius: 2px;
-  box-shadow: 6px 7px 15px -2px rgba(0, 0, 0, 0.75);
-  z-index: 1;
-  :hover {
-    transform: scale(1.02);
-    transition: 0.5s;
-  }
-  h3 {
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    font-size: 250%;
-    padding: 40px;
-    font-family: "Dancing Script", cursive;
-    font-weight: normal;
-    font-style: normal;
-  }
-`;
 
 const Header = () => {
   return (
     <Wrapper>
-      <Content>
-        <h1>Wonderful Houses Gallery</h1>
-      </Content>
+      <TitleWrapper>
+        <h1>House Design Gallery</h1>
+      </TitleWrapper>
       <BottomWave>
         <svg
           data-name="Layer 1"
@@ -104,9 +79,6 @@ const Header = () => {
           ></path>
         </svg>
       </BottomWave>
-      <Card>
-        <h3>Check out our gallery bellow</h3>
-      </Card>
     </Wrapper>
   );
 };
