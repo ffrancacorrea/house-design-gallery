@@ -1,4 +1,4 @@
-import coverHouse from "./coverHouse.jpg";
+import background from "./background.jpg";
 import house_1 from "./house_1.jpg";
 import house_2 from "./house_2.jpg";
 import house_3 from "./house_3.jpg";
@@ -15,7 +15,7 @@ import interior_6 from "./interior_6.jpg";
 import interior_7 from "./interior_7.jpg";
 
 const images = {
-  coverHouse,
+  background,
   house_1,
   house_2,
   house_3,

@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
 import { houses, interiors } from "./houses";
+import images from "../../assets/images";
 
 const Wrapper = styled.div`
   position: relative;
-  background-color: #0b0e12;
+  background-image: url(${images.background});
   font-family: "Dancing Script";
   font-weight: bold;
 `;
@@ -21,6 +22,7 @@ const Button = styled.div`
   border-radius: 4px 0 0 4px;
   z-index: 2;
   transition: 1.2s ease-out;
+  cursor: pointer;
 `;
 
 const GalleryWrapper = styled.div`
@@ -30,7 +32,6 @@ const GalleryWrapper = styled.div`
   margin: 0;
   width: 200%;
   height: 100vh;
-  background-color: #0b0e12;
 `;
 
 const GallerySection = styled.div`
@@ -43,7 +44,7 @@ const GallerySection = styled.div`
   border: 2px solid white;
   width: 100%;
   height: 80vh;
-  background-color: #0b0e12;
+  background-color: #1a1b1c;
   overflow: hidden;
   transition: 1s;
 `;
