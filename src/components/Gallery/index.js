@@ -1,14 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "@emotion/styled";
-import houses from "./houses";
+import { houses, interiors } from "./houses";
 
 const Wrapper = styled.div`
+  position: relative;
+  background-color: #0b0e12;
+  font-family: "Dancing Script";
+  font-weight: bold;
+`;
+
+const Button = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  right: ${({ display }) => (display ? "-100px" : "0px")};
+  top: 20px;
+  padding: 5px 20px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 4px 0 0 4px;
+  z-index: 2;
+  transition: 1.2s ease-out;
+`;
+
+const GalleryWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
   align-items: center;
   margin: 0;
-  width: 100%;
+  width: 200%;
   height: 100vh;
   background-color: #0b0e12;
 `;
@@ -16,14 +36,16 @@ const Wrapper = styled.div`
 const GallerySection = styled.div`
   position: relative;
   display: flex;
+  left: ${({ selected }) => (selected ? "-50%" : "0")};
   justify-content: center;
   flex-direction: column;
-  margin: 0;
+  margin: 0 2%;
   border: 2px solid white;
-  width: 80%;
+  width: 100%;
   height: 80vh;
   background-color: #0b0e12;
   overflow: hidden;
+  transition: 1s;
 `;
 
 const Slider = styled.div`
@@ -44,7 +66,7 @@ const Slider = styled.div`
 
 const Card = styled.div`
   margin: ${({ selected }) =>
-    (selected && "-40px -10px -40px -20px") || "10px"};
+    (selected && "-40px -20px -40px -20px") || "10px"};
   width: 100%;
   height: ${({ selected }) => (selected ? "500px" : "400px")};
   z-index: ${({ selected }) => selected && "2"};
@@ -58,28 +80,62 @@ const Card = styled.div`
 `;
 
 const Gallery = () => {
-  const [selected, setSelected] = useState(2);
-
-  useEffect(() => {
-    console.log(selected);
-  }, [selected]);
+  const [exteriorFocus, setExteriorFocus] = useState(2);
+  const [interiorFocus, setInteriorFocus] = useState(2);
+  const [selected, setSelected] = useState(0);
 
   return (
     <Wrapper>
-      <GallerySection>
-        <Slider selected={selected}>
-          {houses.map((house, index) => (
-            <Card
-              number={index}
-              image={house.image}
-              onClick={() => setSelected(index)}
-              selected={selected === index}
-            >
-              <img src={house.image} alt="house"></img>
-            </Card>
-          ))}
-        </Slider>
-      </GallerySection>
+      <Button display={selected === 1} onClick={() => setSelected(1)}>
+        <span>i</span>
+        <span>n</span>
+        <span>t</span>
+        <span>e</span>
+        <span>r</span>
+        <span>i</span>
+        <span>o</span>
+        <span>r</span>
+      </Button>
+      <Button display={selected === 0} onClick={() => setSelected(0)}>
+        <span>e</span>
+        <span>x</span>
+        <span>t</span>
+        <span>e</span>
+        <span>r</span>
+        <span>i</span>
+        <span>o</span>
+        <span>r</span>
+      </Button>
+      <GalleryWrapper>
+        <GallerySection display={selected === 0} selected={selected}>
+          <Slider selected={exteriorFocus}>
+            {houses.map((house, index) => (
+              <Card
+                number={index}
+                image={house.image}
+                onClick={() => setExteriorFocus(index)}
+                selected={exteriorFocus === index}
+              >
+                <img src={house.image} alt="house"></img>
+              </Card>
+            ))}
+          </Slider>
+        </GallerySection>
+        <GallerySection display={selected === 1} selected={selected}>
+          <Slider selected={interiorFocus}>
+            {interiors.map((house, index) => (
+              <Card
+                number={index}
+                image={house.image}
+                onClick={() => setInteriorFocus(index)}
+                selected={interiorFocus === index}
+              >
+                <img src={house.image} alt="house"></img>
+              </Card>
+            ))}
+          </Slider>
+        </GallerySection>
+      </GalleryWrapper>
     </Wrapper>
   );
 };
