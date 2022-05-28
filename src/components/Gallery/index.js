@@ -59,10 +59,10 @@ const Slider = styled.div`
     (selected === 0 && "20%") ||
     (selected === 1 && "10%") ||
     (selected === 2 && "0%") ||
-    (selected === 3 && "-30%") ||
-    (selected === 4 && "-60%") ||
-    (selected === 5 && "-70%") ||
-    (selected === 6 && "-80%")};
+    (selected === 3 && "-10%") ||
+    (selected === 4 && "-20%") ||
+    (selected === 5 && "-30%") ||
+    (selected === 6 && "-40%")};
 `;
 
 const Card = styled.div`
